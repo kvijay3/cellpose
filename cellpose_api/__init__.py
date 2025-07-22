@@ -1,0 +1,2 @@
+# Cellpose API Django Project
+
