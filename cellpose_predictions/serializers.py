@@ -47,8 +47,8 @@ class PredictionJobCreateSerializer(serializers.ModelSerializer):
     
     def validate_input_image(self, value):
         """Validate uploaded image"""
-        if value.size > 100 * 1024 * 1024:  # 100MB limit
-            raise serializers.ValidationError("Image file too large. Maximum size is 100MB.")
+        if value.size > 500 * 1024 * 1024:  # 500MB limit
+            raise serializers.ValidationError("Image file too large. Maximum size is 500MB.")
         
         # Check file extension
         allowed_extensions = ['.png', '.jpg', '.jpeg', '.tif', '.tiff']
@@ -66,4 +66,3 @@ class PredictionJobStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = PredictionJob
         fields = ['id', 'status', 'created_at', 'updated_at', 'num_cells_detected', 'processing_time']
-
